@@ -1,13 +1,18 @@
 (function() {
     'use strict';
     
-    const pathname = window.location.pathname;
-    
-    function parseUrlPath(path) {
-        const parts = path.replace(/^\/+/, '').split('/');
+    function parseUrlQuery() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const pathParam = urlParams.get('p');
+        
+        if (!pathParam) {
+            throw new Error('Missing path parameter. Expected: ?p=us/congress/119/HR1234');
+        }
+        
+        const parts = pathParam.split('/');
         
         if (parts.length < 4) {
-            throw new Error('Invalid URL format. Expected: /country/congress/session/bill');
+            throw new Error('Invalid path format. Expected: us/congress/119/HR1234');
         }
         
         const [country, congress, session, bill] = parts;
@@ -35,7 +40,7 @@
         try {
             document.getElementById('redirectInfo').style.display = 'block';
             
-            const urlComponents = parseUrlPath(pathname);
+            const urlComponents = parseUrlQuery();
             
             const githubUrl = buildGitHubUrl(urlComponents);
             
@@ -66,6 +71,7 @@
         handleRedirect();
     }
     
-    window.addEventListener('hashchange', handleRedirect);
+    // Listen for query string changes
+    window.addEventListener('popstate', handleRedirect);
     
 })();
