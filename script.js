@@ -48,9 +48,7 @@
             document.getElementById('targetUrl').href = githubUrl;
             document.getElementById('manualLink').href = githubUrl;
             
-            setTimeout(() => {
-                window.location.href = githubUrl;
-            }, 2000);
+            window.location.href = githubUrl;
             
             setTimeout(() => {
                 document.getElementById('manualRedirect').style.display = 'block';
