@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windy Civi Data Pipeline Redirector</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Windy Civi Data Pipeline Redirector</h1>
+        <p>This service automatically redirects to the appropriate GitHub repository based on the URL path.</p>
+        
+        <div id="redirectInfo" class="redirect-info" style="display: none;">
+            <h3>Redirecting to GitHub...</h3>
+            <p><span class="loading"></span>Please wait while we redirect you...</p>
+            <p><strong>Target URL:</strong> <a id="targetUrl" class="github-link" href="#" target="_blank"></a></p>
+        </div>
+        
+        <div id="errorInfo" class="error" style="display: none;">
+            <h3>Redirect Error</h3>
+            <p id="errorMessage"></p>
+            <p>Please check the URL format and try again.</p>
+        </div>
+        
+        <div id="manualRedirect" style="display: none;">
+            <h3>Manual Redirect</h3>
+            <p>If you're not automatically redirected, click the link below:</p>
+            <p><a id="manualLink" class="github-link" href="#" target="_blank">Go to GitHub Repository</a></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
